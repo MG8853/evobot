@@ -1,3 +1,3 @@
 @echo off
-node index.js
+@powershell -NoProfile -ExecutionPolicy unrestricted -Command "node index.js"
 pause
