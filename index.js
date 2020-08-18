@@ -66,7 +66,7 @@ client.on("message", async (message) => {
     if (now < expirationTime) {
       const timeLeft = (expirationTime - now) / 1000;
       return message.reply(
-        `please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`
+        `ちょっと待って ${timeLeft.toFixed(1)} 秒待ってから \`${command.name}\` を実行してね！`
       );
     }
   }
@@ -78,6 +78,6 @@ client.on("message", async (message) => {
     command.execute(message, args);
   } catch (error) {
     console.error(error);
-    message.reply("There was an error executing that command.").catch(console.error);
+    message.reply("> コマンドの実行中にエラーが発生しました").catch(console.error);
   }
 });

@@ -5,20 +5,20 @@ const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 
 module.exports = {
   name: "search",
-  description: "Search and select videos to play",
+  description: "再生したい曲を検索",
   async execute(message, args) {
     if (!args.length)
-      return message.reply(`Usage: ${message.client.prefix}${module.exports.name} <Video Name>`).catch(console.error);
+      return message.reply(`こんな感じに送信してください: ${message.client.prefix}${module.exports.name} <Video Name>`).catch(console.error);
     if (message.channel.activeCollector)
-      return message.reply("A message collector is already active in this channel.");
+      return messagereply("> 現在実行中です");
     if (!message.member.voice.channel)
-      return message.reply("You need to join a voice channel first!").catch(console.error);
+      return message.reply("> あなたがまずそのボイチャに入らないと私は入りません！").catch(console.error);
 
     const search = args.join(" ");
 
     let resultsEmbed = new MessageEmbed()
-      .setTitle(`**Reply with the song number you want to play**`)
-      .setDescription(`Results for: ${search}`)
+      .setTitle(`**曲の番号を返信してください**`)
+      .setDescription(`検索結果: ${search}`)
       .setColor("#F8AA2A");
 
     try {
